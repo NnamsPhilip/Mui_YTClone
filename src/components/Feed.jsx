@@ -6,9 +6,11 @@ const Feed = () => {
 	const [selectedCategory, setSelectedCategory] = useState("New");
 	const [videos, setVideos] = useState([]);
 
+	const year = new Date().getFullYear()
+
 	useEffect(() => {
 		fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-			setVideos(data.items)
+			setVideos(data?.items)
 		);
 	}, [selectedCategory]);
 
@@ -30,7 +32,7 @@ const Feed = () => {
 					variant="body2"
 					sx={{ mt: 1.5, color: "#fff" }}
 				>
-					Copyright 2023 Mui_YouTube
+					Copyright {year} Mui_YouTube
 				</Typography>
 			</Box>
 			<Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>

@@ -10,9 +10,10 @@ const Navbar = () => (
 		p={2}
 		sx={{
 			position: "sticky",
-			background: "#000",
+			background: "black",
 			top: 0,
 			justifyContent: "space-between",
+			zIndex: 1000
 		}}
 	>
 		<Link to="/" style={{ display: "flex", alignItems: "center" }}>

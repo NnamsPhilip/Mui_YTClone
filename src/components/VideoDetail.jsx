@@ -15,11 +15,11 @@ const VideoDetail = () => {
 
 	useEffect(() => {
 		fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
-			setvideoDetail(data.items[0])
+			setvideoDetail(data?.items[0])
 		);
 
 		fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
-			(data) => setvideos(data.items)
+			(data) => setvideos(data?.items)
 		);
 	}, [id]);
 
@@ -34,13 +34,13 @@ const VideoDetail = () => {
 		<Box minHeight="95vh">
 			<Stack direction={{ xs: "column", md: "row" }}>
 				<Box flex={1}>
-					<Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+					<Box sx={{ width: "100%", position: "sticky", top: "86px"}}>
 						<ReactPlayer
 							url={`https://www.youtube.com/watch?v=${id}`}
 							className="react-player"
 							controls
 						/>
-						<Typography variant="h6" color="#fff" fontWeight="bold" p={2}>
+						<Typography fontSize={20} color="#fff" fontWeight="bold" ml={2}>
 							{title}
 						</Typography>
 						<Stack
@@ -62,10 +62,10 @@ const VideoDetail = () => {
 								</Typography>
 							</Link>
 							<Stack direction="row" gap="20px" alignItems="center">
-								<Typography variant="body1" sx={{ opacity: 0.7 }}>
+								<Typography variant="body2" sx={{ opacity: 0.7 }}>
 									{parseInt(viewCount).toLocaleString()} views
 								</Typography>
-								<Typography variant="body1" sx={{ opacity: 0.7 }}>
+								<Typography variant="body2" sx={{ opacity: 0.7 }}>
 									{parseInt(likeCount).toLocaleString()} likes
 								</Typography>
 							</Stack>
